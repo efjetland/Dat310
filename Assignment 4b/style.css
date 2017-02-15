@@ -1,0 +1,27 @@
+
+.site {
+  display: flex;
+  flex-direction: column;
+  margin:0;
+}
+
+.site-content {
+  padding-left: 10px;
+}
+
+#contactForm {
+  display:none;
+  padding-top:5px;
+  padding-bottom: 5px;
+}
+
+#contactForm label {
+  clear:left;
+  float:left;
+  width:4em;
+}
+
+#contactForm input {
+  display: block;
+  margin-bottom:5px;
+}

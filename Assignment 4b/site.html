@@ -1,25 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" type="text/css" href="style.css" />
     <script type="text/javascript" src="script.js"></script>
     <title>Exercise #</title>
 </head>
-<body>
-<div>
+<body class="site">
+<main class="site-content">
   <div>
-    <input type="text" name="search" />
+    <input type="text" name="search" id="searchBox" />
+    <input type="button" name="toggleForm" id="toggleForm" />
   </div>
   <div id="contactForm">
-    <label> </label>
-    <input type="text" name="name" />
-    <label > </label>
-    <input type="text" name="email"/>
-    <label> </label>
-    <input type="text" name="tlf" />
+    <label for="nameInput">Name:</label>
+    <input type="text" name="name" id="nameInput" />
+    <label for="tlfInput">Tlf:</label>
+    <input type="text" name="email" id="tlfInput" />
+    <label for="emailInput">E-mail:</label>
+    <input type="text" name="tlf" id="emailInput" />
+    <input type="button" name="addContact" id="addContact" />
   </div>
   <div id="contactWrapper">
 
   </div>
-</div>
+</main>
 </body>
 </html>
