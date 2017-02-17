@@ -2,26 +2,89 @@
 .site {
   display: flex;
   flex-direction: column;
+  align-items: center;
   margin:0;
 }
 
 .site-content {
-  padding-left: 10px;
+  width:500px;
+  border: 3px solid black;
+  border-radius: 3px;
+}
+
+.clickable {
+  cursor: pointer;
+  cursor: hand;
+}
+
+#controls {
+  border: 3px solid #777777;
+  border-radius: 3px;
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  padding:5px;
+  margin:5px;
+}
+#controls {
+
+}
+.contact {
+  position: relative;
+  margin: 5px;
+  border: 3px solid #777777;
+  border-radius: 3px;
+}
+
+.contact:hover {
+  border-color: black;
+}
+
+.contact * {
+  margin:5px;
+}
+.contact .fa:hover {
+  color:#777777;
+}
+
+.contact .fa-trash {
+  position: absolute;
+  top:0;
+  right:0;
+}
+
+.contact .fa-pencil {
+  position: absolute;
+  top:0;
+  right:17px;
+
 }
 
 #contactForm {
   display:none;
+  margin:5px;
+  border: 3px solid #777777;
+  border-radius: 3px;
+}
+#contactForm * {
+  padding-left: 5px;
+}
+#contactForm h1 {
+  margin:0;
   padding-top:5px;
   padding-bottom: 5px;
 }
-
 #contactForm label {
   clear:left;
   float:left;
   width:4em;
 }
+#contactForm button {
+  display:block;
+  margin:5px;
+}
 
-#contactForm input {
+#contactForm input{
   display: block;
   margin-bottom:5px;
 }
