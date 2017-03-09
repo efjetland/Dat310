@@ -1,0 +1,16 @@
+* {
+    font-family: Verdana, Arial, sans-serif;
+}
+
+table {
+}
+
+th {
+    background-color: #cccccc;
+    text-align: left;
+}
+
+td, th {
+    border: 1px solid black;
+    padding: 3px;    
+}

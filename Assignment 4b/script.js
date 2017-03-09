@@ -141,17 +141,26 @@ function validate(name, tlf, email){
   var namePattern = /[^abcdefghijklmnopqrstuvwxyzæøå]/ig;
   var tlfPattern = /[^0-9()+-\s]/g;
   var emailPattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  if(namePattern.test(name)){
+  if(namePattern.test(name) || name === ""){
     alert("Please enter a valid name");
     return false;
   }
-  if(tlfPattern.test(tlf) && email == ""){
-    alert("Please enter a valid number");
+  if(tlf === "" && email === "") {
+    alert("Please enter a valid number or email address");
     return false;
   }
-    if(!emailPattern.test(email) && tlf == ""){
-    alert("Please enter a valid email adress");
-    return false;
+
+  if(tlfPattern.test(tlf)){
+    if(email !== "" && tlf !== "" || email === ""){
+      alert("Please enter a valid number");
+      return false;
+    }
+  }
+  if(!emailPattern.test(email)){
+    if(email !== "" && tlf !== "" || tlf === ""){
+      alert("Please enter a valid email address");
+      return false;
+    }
   }
   return true;
 }

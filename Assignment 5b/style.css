@@ -1,0 +1,107 @@
+/* General styling */
+
+
+/* Body styling */
+#site{
+  display: flex;
+  flex-direction: column;
+
+}
+/* Header styling */
+
+#header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height:4em;
+}
+#player1 {
+  justify-content: flex-start;
+}
+
+#player2 {
+  align-items: flex-end;
+}
+
+.player {
+  display: none;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  flex:1 0 auto;
+  font-weight:
+}
+.player p {
+  margin:0;
+}
+
+#nameInput{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex:1 0 auto;
+}
+.inputDiv {
+  display: flex;
+  flex-direction: column;
+}
+#timer {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex:1 0 auto;
+}
+#timer p {
+  margin:0;
+}
+
+#result {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex:1 0 auto;
+}
+#result p {
+  margin:0;
+}
+
+/* Site-content styling */
+#site-content {
+  display: flex;
+  justify-content: center;
+
+}
+
+#start {
+  padding:1em;
+  font-size: 2em;
+}
+
+#gameboard {
+  display:flex;
+  flex-wrap: wrap;
+}
+
+.card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+  border-radius: 10px;
+  border: 2px solid #73AD21;
+  background-color: white;
+  margin: 5px;
+}
+
+.card img {
+  width: 45px;
+}
+
+/* Footer styling */
+#footer {
+
+
+}
