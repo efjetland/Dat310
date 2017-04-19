@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="webshop@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.0">
+    <root id="1"/>
+    <schema id="2" parent="1" name="webshop">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="information_schema"/>
+    <schema id="4" parent="1" name="mysql"/>
+    <schema id="5" parent="1" name="performance_schema"/>
+    <schema id="6" parent="1" name="sakila"/>
+    <schema id="7" parent="1" name="sys"/>
+    <schema id="8" parent="1" name="test"/>
+    <schema id="9" parent="1" name="world"/>
+    <table id="10" parent="2" name="bestilling"/>
+    <table id="11" parent="2" name="bestiltprodukt"/>
+    <table id="12" parent="2" name="henting"/>
+    <table id="13" parent="2" name="kunde"/>
+    <table id="14" parent="2" name="levering"/>
+    <table id="15" parent="2" name="nedlasting"/>
+    <table id="16" parent="2" name="produkt"/>
+    <table id="17" parent="2" name="relaterteprodukt"/>
+    <table id="18" parent="2" name="sending"/>
+    <column id="19" parent="10" name="bestillingID">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="20" parent="10" name="kunde">
+      <Position>2</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="21" parent="10" name="leveringsID">
+      <Position>3</Position>
+      <DataType>int(10)|0</DataType>
+    </column>
+    <index id="22" parent="10" name="kunde">
+      <ColNames>kunde</ColNames>
+    </index>
+    <key id="23" parent="10" name="PRIMARY">
+      <ColNames>bestillingID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="24" parent="10" name="Bestilling_ibfk_1">
+      <ColNames>kunde</ColNames>
+      <RefSchemaName>webshop</RefSchemaName>
+      <RefTableName>kunde</RefTableName>
+      <RefColNames>brukernavn</RefColNames>
+    </foreign-key>
+    <column id="25" parent="11" name="bestillingID">
+      <Position>1</Position>
+      <DataType>int(10)|0</DataType>
+    </column>
+    <column id="26" parent="11" name="produktID">
+      <Position>2</Position>
+      <DataType>int(10)|0</DataType>
+    </column>
+    <column id="27" parent="11" name="antall">
+      <Position>3</Position>
+      <DataType>int(10)|0</DataType>
+    </column>
+    <index id="28" parent="11" name="bestillingID">
+      <ColNames>bestillingID</ColNames>
+    </index>
+    <index id="29" parent="11" name="produktID">
+      <ColNames>produktID</ColNames>
+    </index>
+    <foreign-key id="30" parent="11" name="BestiltProdukt_ibfk_2">
+      <ColNames>bestillingID</ColNames>
+      <RefSchemaName>webshop</RefSchemaName>
+      <RefTableName>bestilling</RefTableName>
+      <RefColNames>bestillingID</RefColNames>
+    </foreign-key>
+    <foreign-key id="31" parent="11" name="BestiltProdukt_ibfk_1">
+      <ColNames>produktID</ColNames>
+      <RefSchemaName>webshop</RefSchemaName>
+      <RefTableName>produkt</RefTableName>
+      <RefColNames>produktID</RefColNames>
+    </foreign-key>
+    <column id="32" parent="12" name="leveringsID">
+      <Position>1</Position>
+      <DataType>int(10)|0</DataType>
+    </column>
+    <column id="33" parent="12" name="leveringsType">
+      <Position>2</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="34" parent="12" name="henteAdresse">
+      <Position>3</Position>
+      <DataType>varchar(30)|0</DataType>
+    </column>
+    <index id="35" parent="12" name="leveringsID">
+      <ColNames>leveringsID</ColNames>
+    </index>
+    <foreign-key id="36" parent="12" name="Henting_ibfk_1">
+      <ColNames>leveringsID</ColNames>
+      <RefSchemaName>webshop</RefSchemaName>
+      <RefTableName>levering</RefTableName>
+      <RefColNames>leveringsID</RefColNames>
+    </foreign-key>
+    <column id="37" parent="13" name="brukernavn">
+      <Position>1</Position>
+      <DataType>varchar(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="38" parent="13" name="navn">
+      <Position>2</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="39" parent="13" name="adresse">
+      <Position>3</Position>
+      <DataType>varchar(30)|0</DataType>
+    </column>
+    <column id="40" parent="13" name="telefon">
+      <Position>4</Position>
+      <DataType>int(8)|0</DataType>
+    </column>
+    <column id="41" parent="13" name="email">
+      <Position>5</Position>
+      <DataType>varchar(40)|0</DataType>
+    </column>
+    <column id="42" parent="13" name="adminFlag">
+      <Position>6</Position>
+      <DataType>tinyint(1)|0</DataType>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="43" parent="13" name="passord">
+      <Position>7</Position>
+      <DataType>varchar(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="44" parent="13" name="PRIMARY">
+      <ColNames>brukernavn</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="45" parent="14" name="leveringsID">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="46" parent="14" name="dato">
+      <Position>2</Position>
+      <DataType>varchar(12)|0</DataType>
+    </column>
+    <key id="47" parent="14" name="PRIMARY">
+      <ColNames>leveringsID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="48" parent="15" name="leveringsID">
+      <Position>1</Position>
+      <DataType>int(10)|0</DataType>
+    </column>
+    <column id="49" parent="15" name="leveringsType">
+      <Position>2</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="50" parent="15" name="nedlastingsKode">
+      <Position>3</Position>
+      <DataType>varchar(30)|0</DataType>
+    </column>
+    <index id="51" parent="15" name="leveringsID">
+      <ColNames>leveringsID</ColNames>
+    </index>
+    <foreign-key id="52" parent="15" name="Nedlasting_ibfk_1">
+      <ColNames>leveringsID</ColNames>
+      <RefSchemaName>webshop</RefSchemaName>
+      <RefTableName>levering</RefTableName>
+      <RefColNames>leveringsID</RefColNames>
+    </foreign-key>
+    <column id="53" parent="16" name="produktID">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="54" parent="16" name="produktType">
+      <Position>2</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="55" parent="16" name="navn">
+      <Position>3</Position>
+      <DataType>varchar(40)|0</DataType>
+    </column>
+    <column id="56" parent="16" name="beskrivelse">
+      <Position>4</Position>
+      <DataType>varchar(1000)|0</DataType>
+    </column>
+    <column id="57" parent="16" name="standardpris">
+      <Position>5</Position>
+      <DataType>int(30)|0</DataType>
+    </column>
+    <column id="58" parent="16" name="tilbudspris">
+      <Position>6</Position>
+      <DataType>int(30)|0</DataType>
+    </column>
+    <column id="59" parent="16" name="bilde">
+      <Position>7</Position>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <key id="60" parent="16" name="PRIMARY">
+      <ColNames>produktID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="61" parent="17" name="produkt1ID">
+      <Position>1</Position>
+      <DataType>int(10)|0</DataType>
+    </column>
+    <column id="62" parent="17" name="produkt2ID">
+      <Position>2</Position>
+      <DataType>int(10)|0</DataType>
+    </column>
+    <column id="63" parent="18" name="leveringsID">
+      <Position>1</Position>
+      <DataType>int(10)|0</DataType>
+    </column>
+    <column id="64" parent="18" name="leveringsType">
+      <Position>2</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="65" parent="18" name="leveringsAdresse">
+      <Position>3</Position>
+      <DataType>varchar(30)|0</DataType>
+    </column>
+    <index id="66" parent="18" name="leveringsID">
+      <ColNames>leveringsID</ColNames>
+    </index>
+    <foreign-key id="67" parent="18" name="Sending_ibfk_1">
+      <ColNames>leveringsID</ColNames>
+      <RefSchemaName>webshop</RefSchemaName>
+      <RefTableName>levering</RefTableName>
+      <RefColNames>leveringsID</RefColNames>
+    </foreign-key>
+  </database-model>
+</dataSource>

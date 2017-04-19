@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href={{url_for("static", filename="style.css")}} rel="stylesheet" type="text/css"/>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div>
+        <div>
+            <form action="{{ url_for("produkt") }}" method="post">
+                <select name="typeselect" id="typeselect">
+                    {% for type in prodtypes %}
+                        <option value="{{ type }}">{{ type }}</option>
+                    {% endfor %}
+                </select>
+                <input type="submit" value="Show Products">
+            </form>
+        </div>
+        <div>
+            <form action="{{ url_for("orders") }}" method="post">
+                <input name="user" id="user" type="text" list="userlist">
+                <input type="submit" value="Show orders">
+                <datalist id="userlist">
+                    {% for user in userlist %}
+                        <option value="{{ user }}" />
+                    {% endfor %}
+                </datalist>
+            </form>
+        </div>
+        <div>
+            <form action="{{ url_for("register") }}">
+                <input type="submit" value="Register new user">
+            </form>
+        </div>
+    </div>
+</body>
+</html>

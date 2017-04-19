@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href={{url_for("static", filename="style.css")}} rel="stylesheet" type="text/css"/>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <p>Orders from user: {{ user }}</p>
+    <table>
+        <tr>
+            <th>OrderID</th>
+            <th>DeliveryId</th>
+        </tr>
+        {% for order in orders %}
+            <tr>
+                <td><a href="{{ url_for("order", orderID=order.orderID) }}">{{ order.orderID }}</a></td>
+                <td>{{ order.deliveryID }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

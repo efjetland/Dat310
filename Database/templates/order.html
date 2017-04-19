@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href={{url_for("static", filename="style.css")}} rel="stylesheet" type="text/css"/>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>ProductID</th>
+            <th>Type</th>
+            <th>Name</th>
+            <th>Amount</th>
+            <th>Price</th>
+            <th>Total</th>
+        </tr>
+        {% for item in order %}
+            <tr>
+                <td>{{ item.productID }}</td>
+                <td>{{ item.type }}</td>
+                <td>{{ item.name }}</td>
+                <td>{{ item.amount }}</td>
+                <td>{{ item.price }}</td>
+                <td>{{ item.totalprice }}</td>
+            </tr>
+        {% endfor %}
+        <tr>
+            <th colspan="5">Sum:</th>
+            <th>{{ orderSum }}</th>
+        </tr>
+    </table>
+</body>
+</html>

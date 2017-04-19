@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href={{url_for("static", filename="style.css")}} rel="stylesheet" type="text/css"/>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div>
+        <form action="{{ url_for("complete") }}" method="post">
+            <label for="username">Username:</label>
+            <input class="reg-input" name="username" id="username" type="text" maxlength="20" required>
+            <label for="name">Name:</label>
+            <input class="reg-input" name="name" id="name" type="text" maxlength="20" required>
+            <label for="address">Address:</label>
+            <input class="reg-input" name="address" id="address" type="text" maxlength="30" required>
+            <label for="phone">Phone</label>
+            <input class="reg-input" name="phone" id="phone" type="text" maxlength="8" required>
+            <label for="email">Email:</label>
+            <input class="reg-input" name="email" id="email" type="email" maxlength="40" required>
+            <label for="admin">Admin:</label>
+            <input name="admin" type="hidden" value="0">
+            <input class="reg-input" name="admin" id="admin" type="checkbox" value="1">
+            <label for="password">Password:</label>
+            <input class="reg-input" name="password" id="password" type="password" maxlength="20" required>
+            <input class="reg-input" type="submit" value="Register">
+        </form>
+    </div>
+</body>
+</html>
