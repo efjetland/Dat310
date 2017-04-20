@@ -1,0 +1,108 @@
+CREATE TABLE `Kunde` (
+  `brukernavn` varchar(20) NOT NULL,
+  `navn` varchar(20) DEFAULT NULL,
+  `adresse` varchar(30) DEFAULT NULL,
+  `telefon` int(8) DEFAULT NULL,
+  `email` varchar(40) DEFAULT NULL,
+  `adminFlag` tinyint(1) DEFAULT '0',
+  `passord` varchar(20) NOT NULL,
+  PRIMARY KEY (`brukernavn`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE `Bestilling` (
+  `bestillingID` int(11) NOT NULL AUTO_INCREMENT,
+  `kunde` varchar(20) DEFAULT NULL,
+  `leveringsID` int(10) DEFAULT NULL,
+  PRIMARY KEY (`bestillingID`),
+  KEY `kunde` (`kunde`),
+  CONSTRAINT `Bestilling_ibfk_1` FOREIGN KEY (`kunde`) REFERENCES `Kunde` (`brukernavn`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+
+CREATE TABLE `Produkt` (
+  `produktID` int(11) NOT NULL AUTO_INCREMENT,
+  `produktType` varchar(20) DEFAULT NULL,
+  `navn` varchar(40) DEFAULT NULL,
+  `beskrivelse` varchar(1000) DEFAULT NULL,
+  `standardpris` int(30) DEFAULT NULL,
+  `tilbudspris` int(30) DEFAULT NULL,
+  `bilde` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`produktID`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+
+CREATE TABLE `Levering` (
+  `leveringsID` int(11) NOT NULL AUTO_INCREMENT,
+  `dato` varchar(12) DEFAULT NULL,
+  PRIMARY KEY (`leveringsID`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+
+CREATE TABLE `BestiltProdukt` (
+  `bestillingID` int(10) DEFAULT NULL,
+  `produktID` int(10) DEFAULT NULL,
+  `antall` int(10) DEFAULT NULL,
+  KEY `produktID` (`produktID`),
+  KEY `bestillingID` (`bestillingID`),
+  CONSTRAINT `BestiltProdukt_ibfk_1` FOREIGN KEY (`produktID`) REFERENCES `Produkt` (`produktID`),
+  CONSTRAINT `BestiltProdukt_ibfk_2` FOREIGN KEY (`bestillingID`) REFERENCES `Bestilling` (`bestillingID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE `Henting` (
+  `leveringsID` int(10) DEFAULT NULL,
+  `leveringsType` varchar(20) DEFAULT NULL,
+  `henteAdresse` varchar(30) DEFAULT NULL,
+  KEY `leveringsID` (`leveringsID`),
+  CONSTRAINT `Henting_ibfk_1` FOREIGN KEY (`leveringsID`) REFERENCES `Levering` (`leveringsID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE `Nedlasting` (
+  `leveringsID` int(10) DEFAULT NULL,
+  `leveringsType` varchar(20) DEFAULT NULL,
+  `nedlastingsKode` varchar(30) DEFAULT NULL,
+  KEY `leveringsID` (`leveringsID`),
+  CONSTRAINT `Nedlasting_ibfk_1` FOREIGN KEY (`leveringsID`) REFERENCES `Levering` (`leveringsID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE `RelaterteProdukt` (
+  `produkt1ID` int(10) DEFAULT NULL,
+  `produkt2ID` int(10) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE `Sending` (
+  `leveringsID` int(10) DEFAULT NULL,
+  `leveringsType` varchar(20) DEFAULT NULL,
+  `leveringsAdresse` varchar(30) DEFAULT NULL,
+  KEY `leveringsID` (`leveringsID`),
+  CONSTRAINT `Sending_ibfk_1` FOREIGN KEY (`leveringsID`) REFERENCES `Levering` (`leveringsID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+insert into kunde() values("Spabbi", "Kent Morendal","Beikendalvegen 12",41252351, "kmordal@gmail.com",0, "KMORD321");
+insert into kunde() values("Neiman", "Neil Cranberry","Markbotten 54",41262651, "Neiman@gmail.com",0, "Cranman92");
+insert into kunde() values("Lillaliana", "Liana Langbur","Langmyrvegen 9B",97351412, "Lillaliana@gmail.com",0, "Plurple1");
+
+insert into levering(dato) value("19/04/17");
+insert into levering(dato) value("26/04/17");
+insert into levering(dato) value("13/04/17");
+insert into levering(dato) value("19/04/17");
+insert into levering(dato) value("15/04/17");
+insert into bestilling(kunde, leveringsID) values("Spabbi", 1);
+insert into bestilling(kunde, leveringsID) values("Spabbi", 2);
+insert into bestilling(kunde, leveringsID) values("Neiman", 3);
+insert into bestilling(kunde, leveringsID) values("Lillaliana", 4);
+insert into bestilling(kunde, leveringsID) values("Neiman", 5);
+
+insert into produkt(produktType, navn, beskrivelse, standardpris, tilbudspris, bilde) values("Watch","TXM087","Our TXM087 is a clash of elegance forged between two tenacious colours. The black 42mm polished casing is contrasted via its gold crown and detailing, the polished gold hands and logo are an epic match to the matte black dial. This timepiece can be sported as a dress watch or with a casual outfit. Complemented by our black stainless steel strap.", 90, 80,"TXM087.jpg");
+insert into produkt(produktType, navn, beskrivelse, standardpris, tilbudspris, bilde) values("Watch","TXM053","Our TXM053 isn't only easy on the eye, it attracts the eye. The hand polished gold stainless steel case and mesh strap sets this watch apart in the crowd. The gold sunray dial, inset with its chronograph features and a bold black second hand is a true companion for any outfit.", 90, null,"TXM053.jpg");
+insert into produkt(produktType, navn, beskrivelse, standardpris, tilbudspris, bilde) values("Watch","TXM054","TXM054 is a true representative of the Tayroc name, featuring a matte black case and sunray dial against our signature statement single red hand. Its face embedded with the chronograph features and date window combines simplicity and engineering excellence into one timepiece. This is a model you do not want to miss out on!", 90, 60,"TXM054.jpg");
+insert into produkt(produktType, navn, beskrivelse, standardpris, tilbudspris, bilde) values("Watch","TXM092","Our TXM092 is a yet another timepiece we are proud to bring to you, featuring a matte black case and sunray dial. Its face embedded with the chronograph features and date window combines simplicity and elegance, wrapping your wrist with only the softest strap crafted from hand beat leather. What are you waiting for?", 85, null,"TXM092.jpg");
+insert into produkt(produktType, navn, beskrivelse, standardpris, tilbudspris, bilde) values("Watch","TXM091","Our TXM091 showcases the achievement of creativity, design and engineering rolled into one desirable timepiece. This model boasts a silver stainless steel case, silver sun ray dial featuring a chronograph movement and the final touch is the swift blue second hand that really puts it in its own league. Paired with our tan leather strap this watch can be worn for any occasion!", 85, 50,"TXM091.jpg");
+insert into produkt(produktType, navn, beskrivelse, standardpris, tilbudspris, bilde) values("Watch","TXM097","TXM097 is a true representative of the Tayroc name, featuring a matte black case and sunray dial against our blue second hands. Its face embedded with the chronograph features and date window combines simplicity and engineering excellence into one timepiece. Now matched with our high quality sandstone strap this watch can be worn anywhere!", 85, 75,"TXM097.jpg");
+
+insert into bestiltprodukt() values(1, 1, 1);
+insert into bestiltprodukt() values(1, 3, 2);
+insert into bestiltprodukt() values(2, 4, 3);
+insert into bestiltprodukt() values(3, 2, 1);
+insert into bestiltprodukt() values(3, 4, 1);
+insert into bestiltprodukt() values(3, 5, 1);
+insert into bestiltprodukt() values(4, 5, 2);
+insert into bestiltprodukt() values(4, 3, 1);
+insert into bestiltprodukt() values(5, 1, 1);
+insert into bestiltprodukt() values(5, 4, 2);
